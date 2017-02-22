@@ -14,10 +14,10 @@
 
     class ResaurantTest extends PHPUnit_Framework_TestCase
     {
-        // protected function tearDown()
-        //  {
-        //    Restaurant::deleteAll();
-        //  }
+        protected function tearDown()
+         {
+           Restaurant::deleteAll();
+         }
 
         ///Test 0: test_getName
         //Desc: check class Restaurant is made and can call name by getName()
@@ -44,21 +44,47 @@
        //Desc: add restaurant_name restaurant table and return
        //Input: "Sam's Pizza"
        //Output: "Sam's Pizza"
-       function test_save()
-        {
-            //Arrange
-            $restaurant_name = "Sams Pizza";
-            $test_restaurant = new Restaurant($restaurant_name);
+    //    function test_save()
+    //     {
+    //         //Arrange
+    //         $restaurant_name = "Sams Pizza";
+    //         $test_restaurant = new Restaurant($restaurant_name);
+       //
+    //         //Act
+    //         $test_restaurant->save();
+       //
+    //         //Assert
+    //         $result = Restaurant::getAll();
+    //         $this->assertEquals($test_restaurant, $result[0]);
+    //     }
 
-            //Act
-            $test_restaurant->save();
+       function test_getAll()
+       {
+           // Arrange
+           $restaurant_name1 = "Sams Pizza";
+           $restaurant_name2 = "Bobs Burgers";
+           $test_restaurant1 = new Restaurant($restaurant_name1);
+           $test_restaurant1->save();
+           $test_restaurant2= new Restaurant($restaurant_name2);
+           $test_restaurant2->save();
 
-            //Assert
-            $result = Restaurant::getAll();
-            $this->assertEquals($test_restaurant, $result[0]);
-        }
+           //Act
+           $result = Restaurant::getAll();
 
-    //    function test_getAll()
+           //Assert
+           $this->assertEquals($test_restaurant1, $result[0]);
+       }
+
+
+///Test 2: test_deleteAll()    *don't forget tearDown!!
+        //We need
+        //deleteAll()
+        //Desc: delete all records from restaurant_name
+        //Input: "Sam's Pizza", "Tom's Burgers"
+        //Output: " "
+
+
+    //    function test_deleteAll()
     //    {
     //        // Arrange
     //        $restaurant_name1 = "Sam's Pizza";
@@ -74,15 +100,6 @@
     //        //Assert
     //        $this->assertEquals($restaurant_name1, $result[0]);
     //    }
-
-
-///Test 2: test_deleteAll()    *don't forget tearDown!!
-        //We need
-        //deleteAll()
-        //Desc: delete all records from restaurant_name
-        //Input: "Sam's Pizza", "Tom's Burgers"
-        //Output: " "
-
 ///Test 3: test_getId()   *update save(), getAll() func
         //use getId()
         //desc: return hard-coded value
