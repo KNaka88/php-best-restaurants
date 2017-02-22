@@ -121,10 +121,28 @@
                       $this->assertEquals(true, is_numeric($result));
                   }
 
-///Test 4 test_find()
-        //We need
-        //find()
-        //desc: find all matched indexes to restaurant_names
-        //Input restaurant_name1 = "Sam's Pizza, 1", restaurant_name2 = "Tom's Burgers, 2"
-        //output: "Sam's Pizza, Tom's Burgers"
+        ///Test 4 test_find()
+                //We need
+                //find()
+                //desc: find all matched indexes to restaurant_names
+                //Input restaurant_name1 = "Sam's Pizza, 1", restaurant_name2 = "Tom's Burgers, 2"
+                //output: "Sam's Pizza, Tom's Burgers"
+
+                function test_find()
+                {
+                    //Arrange
+                    $restaurant_name = "Sams Pizza";
+                    $restaurant_name2 = "Bobs Burgers";
+                    $test_restaurant = new Restaurant($restaurant_name);
+                    $test_restaurant2 = new Restaurant($restaurant_name2);
+                    $test_restaurant->save();
+                    $test_restaurant2->save();
+
+
+                    //Act
+                    $result = Restaurant::find($test_restaurant->getId());
+
+                    //Assert
+                    $this->assertEquals($test_restaurant, $result);
+                }
 }
