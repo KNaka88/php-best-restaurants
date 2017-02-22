@@ -84,22 +84,23 @@
         //Output: " "
 
 
-    //    function test_deleteAll()
-    //    {
-    //        // Arrange
-    //        $restaurant_name1 = "Sam's Pizza";
-    //        $restaurant_name2 = "Bob's Burgers";
-    //        $test_restaurant1 = new Restaurant($restaurant_name1);
-    //        $test_restaurant1->save();
-    //        $test_restaurant2= new Restaurant($restaurant_name2);
-    //        $test_restaurant2->save();
-       //
-    //        //Act
-    //        $result = Restaurant::getAll();
-       //
-    //        //Assert
-    //        $this->assertEquals($restaurant_name1, $result[0]);
-    //    }
+       function test_deleteAll()
+       {
+           // Arrange
+           $restaurant_name1 = "Sams Pizza";
+           $restaurant_name2 = "Bobs Burgers";
+           $test_restaurant1 = new Restaurant($restaurant_name1);
+           $test_restaurant1->save();
+           $test_restaurant2= new Restaurant($restaurant_name2);
+           $test_restaurant2->save();
+
+           //Act
+           Restaurant::deleteAll();
+           $result = Restaurant::getAll();
+
+           //Assert
+           $this->assertEquals([], $result);
+       }
 ///Test 3: test_getId()   *update save(), getAll() func
         //use getId()
         //desc: return hard-coded value
