@@ -1,6 +1,8 @@
+best_restaurants
 
 
-** restaurant
+
+** restaurants
 | Field           | Type                | Null | Key | Default | Extra          |
 |-----------------|---------------------|------|-----|---------|----------------|
 | id              | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
