@@ -26,7 +26,7 @@
     //     function test_getName()
     //    {
     //        //Arrange
-    //        $restaurant_name = "Sam's Pizza";
+    //        $restaurant_name = "Sams Pizza";
     //        $test_restaurant = new Restaurant($restaurant_name);
        //
     //        //Act
@@ -61,6 +61,7 @@
        function test_getAll()
        {
            // Arrange
+           // $restaurant_name1 = addslashes("Sam's Pizza");
            $restaurant_name1 = "Sams Pizza";
            $restaurant_name2 = "Bobs Burgers";
            $test_restaurant1 = new Restaurant($restaurant_name1);
@@ -101,11 +102,24 @@
            //Assert
            $this->assertEquals([], $result);
        }
-///Test 3: test_getId()   *update save(), getAll() func
-        //use getId()
-        //desc: return hard-coded value
-        //Input: restaurant_name = "Bob's Burgers", id = 1
-        //Output: 1
+        ///Test 3: test_getId()   *update save(), getAll() func
+                //use getId()
+                //desc: return hard-coded value
+                //Input: restaurant_name = "Bob's Burgers", id = 1
+                //Output: 1
+                function test_getId()
+                  {
+                      //Arrange
+                      $restaurant_name = "Sams Pizza";
+                      $restaurant_id = 1;
+                      $test_restaurant = new Restaurant($restaurant_name, $restaurant_id);
+
+                      //Act
+                      $result = $test_restaurant->getId();
+
+                      //Assert
+                      $this->assertEquals(true, is_numeric($result));
+                  }
 
 ///Test 4 test_find()
         //We need
