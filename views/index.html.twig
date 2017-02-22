@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Restaurant Database</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Best Restaurants</h1>
+            <p>Find a restaurant</p>
+
+            <form class="form-group" action="/cuisine" method="post">
+                <label for="cuisine">Create cuisine category</label>
+                <input class="form-control" type="text" name="cuisine">
+                <button type="submit">Go!</button>
+            </form>
+
+            {% if restaurants is not empty %}
+                <p> are your choices:</p>
+                <ul>
+                    {% for restaurant in restaurants %}
+                        <li><a href="/restaurant/{{restaurant.getId}}">{{ restaurant.getRestaurantName }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Please a cuisine you like</p>
+            {% endif %}
+        </div>
+    </body>
+</html>
