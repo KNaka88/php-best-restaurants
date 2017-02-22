@@ -1,10 +1,39 @@
 <?php
 
+    /**
+    * @backupGlobals disabled
+    * @backupStaticAttributes disabled
+    */
 
-///Test 0: test_getName
-    //Desc: check class Restaurant is made and can call name by getName()
-    //Input: "Sam's Pizza"
-    //Output: "Sam's Pizza"
+    require_once "src/Restaurant.php";
+
+    $server = 'mysql:host=localhost:8889;dbname=best_restaurant_test';
+    $username = 'root';
+    $password = 'root';
+    $DB = new PDO($server, $username, $password);
+
+    class ResaurantTest extends PHPUnit_Framework_TestCase
+    {
+
+        ///Test 0: test_getName
+        //Desc: check class Restaurant is made and can call name by getName()
+        //Input: "Sam's Pizza"
+        //Output: "Sam's Pizza"
+        function test_getName()
+       {
+           //Arrange
+           $restaurant_name = "Sam's Pizza";
+           $test_restaurant = new Restaurant($restaurant_name);
+
+           //Act
+           $test_restaurant->getRestaurantName();
+
+           //Assert
+           $result = $test_restaurant;
+           $this->assertEquals($test_restaurant, $result);
+       }
+
+    }
 
 ////Test 1: test_save
         //We need to create and test

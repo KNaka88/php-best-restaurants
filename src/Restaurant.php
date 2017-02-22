@@ -11,7 +11,7 @@
             $this->id = $id;
         }
 
-        function getRestaurant_name()
+        function getRestaurantName()
         {
             return $this->restaurant_name;
         }
