@@ -19,44 +19,44 @@
            Restaurant::deleteAll();
          }
 
-        ///Test 0: test_getName
-        //Desc: check class Restaurant is made and can call name by getName()
-        //Input: "Sam's Pizza"
-        //Output: "Sam's Pizza"
-    //     function test_getName()
-    //    {
-    //        //Arrange
-    //        $restaurant_name = "Sams Pizza";
-    //        $test_restaurant = new Restaurant($restaurant_name);
-       //
-    //        //Act
-    //        $test_restaurant->getRestaurantName();
-       //
-    //        //Assert
-    //        $result = $test_restaurant;
-    //        $this->assertEquals($test_restaurant, $result);
-    //    }
+        // /Test 0: test_getName
+        // Desc: check class Restaurant is made and can call name by getName()
+        // Input: "Sam's Pizza"
+        // Output: "Sam's Pizza"
+        function test_getName()
+       {
+           //Arrange
+           $restaurant_name = "Sams Pizza";
+           $test_restaurant = new Restaurant($restaurant_name);
 
-       ////Test 1: test_save
-       //We need to create and test
-       //save()
-       //getAll()
-       //Desc: add restaurant_name restaurant table and return
-       //Input: "Sam's Pizza"
-       //Output: "Sam's Pizza"
-    //    function test_save()
-    //     {
-    //         //Arrange
-    //         $restaurant_name = "Sams Pizza";
-    //         $test_restaurant = new Restaurant($restaurant_name);
-       //
-    //         //Act
-    //         $test_restaurant->save();
-       //
-    //         //Assert
-    //         $result = Restaurant::getAll();
-    //         $this->assertEquals($test_restaurant, $result[0]);
-    //     }
+           //Act
+           $test_restaurant->getRestaurantName();
+
+           //Assert
+           $result = $test_restaurant;
+           $this->assertEquals($test_restaurant, $result);
+       }
+
+       //Test 1: test_save
+    //    We need to create and test
+    //    save()
+    //    getAll()
+    //    Desc: add restaurant_name restaurant table and return
+    //    Input: "Sam's Pizza"
+    //    Output: "Sam's Pizza"
+       function test_save()
+        {
+            //Arrange
+            $restaurant_name = "Sams Pizza";
+            $test_restaurant = new Restaurant($restaurant_name, 3);
+
+            //Act
+            $test_restaurant->save();
+
+            //Assert
+            $result = Restaurant::getAll();
+            $this->assertEquals($test_restaurant, $result[0]);
+        }
 
        function test_getAll()
        {
@@ -64,9 +64,9 @@
            // $restaurant_name1 = addslashes("Sam's Pizza");
            $restaurant_name1 = "Sams Pizza";
            $restaurant_name2 = "Bobs Burgers";
-           $test_restaurant1 = new Restaurant($restaurant_name1);
+           $test_restaurant1 = new Restaurant($restaurant_name1, 3);
            $test_restaurant1->save();
-           $test_restaurant2= new Restaurant($restaurant_name2);
+           $test_restaurant2= new Restaurant($restaurant_name2, 4);
            $test_restaurant2->save();
 
            //Act
@@ -90,9 +90,9 @@
            // Arrange
            $restaurant_name1 = "Sams Pizza";
            $restaurant_name2 = "Bobs Burgers";
-           $test_restaurant1 = new Restaurant($restaurant_name1);
+           $test_restaurant1 = new Restaurant($restaurant_name1, 3);
            $test_restaurant1->save();
-           $test_restaurant2= new Restaurant($restaurant_name2);
+           $test_restaurant2= new Restaurant($restaurant_name2, 4);
            $test_restaurant2->save();
 
            //Act
@@ -112,7 +112,8 @@
                       //Arrange
                       $restaurant_name = "Sams Pizza";
                       $restaurant_id = 1;
-                      $test_restaurant = new Restaurant($restaurant_name, $restaurant_id);
+                      $cuisine_id = 1;
+                      $test_restaurant = new Restaurant($restaurant_name, $cuisine_id, $restaurant_id);
 
                       //Act
                       $result = $test_restaurant->getId();
@@ -132,9 +133,11 @@
                 {
                     //Arrange
                     $restaurant_name = "Sams Pizza";
+                    $cuisine_id = 5;
                     $restaurant_name2 = "Bobs Burgers";
-                    $test_restaurant = new Restaurant($restaurant_name);
-                    $test_restaurant2 = new Restaurant($restaurant_name2);
+                    $cuisine_id2 = 6;
+                    $test_restaurant = new Restaurant($restaurant_name, $cuisine_id);
+                    $test_restaurant2 = new Restaurant($restaurant_name2, $cuisine_id2);
                     $test_restaurant->save();
                     $test_restaurant2->save();
 
@@ -151,7 +154,8 @@
                     // Arrange
                     $restaurant_name = "Sams Pizza";
                     $restaurant_id = null;
-                    $test_restaurant = new Restaurant($restaurant_name, $restaurant_id);
+                    $cuisine_id = 5;
+                    $test_restaurant = new Restaurant($restaurant_name, $restaurant_id, $cuisine_id);
                     $new_restaurant_name = "Bobs Burgers";
 
                     // Act
@@ -168,11 +172,11 @@
 
                     //Arrange
                     $restaurant_name = "Sams Pizza";
-                    $test_restaurant = new Restaurant($restaurant_name);
+                    $test_restaurant = new Restaurant($restaurant_name, 3);
                     $test_restaurant->save();
 
                     $restaurant_name2 = "Sams Pizza";
-                    $test_restaurant2 = new Restaurant($restaurant_name2);
+                    $test_restaurant2 = new Restaurant($restaurant_name2, 4);
                     $test_restaurant2->save();
 
                     //Act

@@ -4,11 +4,13 @@
     {
         private $restaurant_name;
         private $id;
+        private $cuisine_id;
 
-        function __construct($restaurant_name, $id = null)
+        function __construct($restaurant_name, $cuisine_id = null, $id = null )
         {
             $this->restaurant_name = $restaurant_name;
             $this->id = $id;
+            $this->cuisine_id = $cuisine_id;
         }
 
         function getRestaurantName()
@@ -26,11 +28,21 @@
             return $this->id;
         }
 
+        function getCuisineId()
+        {
+            return $this->cuisine_id;
+        }
+
+        function setCuisineId($new_cuisine_id)
+        {
+            $this->cuisine_id = $new_cuisine_id;
+        }
+
         function save()
         {
             // $GLOBALS['DB']->exec("INSERT INTO restaurants (restaurant_name) VALUES ('{$this->getRestaurantName()}');");
 
-           $GLOBALS['DB']->exec("INSERT INTO restaurants(restaurant_name) VALUES ('{$this->getRestaurantName()}')");
+           $GLOBALS['DB']->exec("INSERT INTO restaurants(restaurant_name, cuisine_id) VALUES ('{$this->getRestaurantName()}', {$this->getCuisineId()})");
 
            $this->id = $GLOBALS['DB']->lastInsertId();
         }
@@ -50,7 +62,9 @@
             foreach($returned_restaurant_names as $name){
                 $new_restaurant_name = $name['restaurant_name'];
                 $new_id = $name['id'];
-                $new_restaurant_object = new Restaurant($new_restaurant_name, $new_id);
+                $new_cuisine_id = $name['cuisine_id'];
+                $new_restaurant_object = new Restaurant($new_restaurant_name, $new_cuisine_id, $new_id);
+                var_dump($new_restaurant_object);
                 array_push($restaurants, $new_restaurant_object);
             }
             return $restaurants;

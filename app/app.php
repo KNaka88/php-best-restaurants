@@ -35,7 +35,7 @@
     $app->post("/cuisine", function() use ($app) {
         $cuisine = new Cuisine($_POST['cuisine']);
         $cuisine->save();
-        return $app['twig']->render('index.html.twig', array('cuisines' => Cuisine::getAll(), ));
+        return $app['twig']->render('index.html.twig', array('cuisines' => Cuisine::getAll() ));
     });
 
     $app->get("/restaurant/{id}", function($id) use ($app) {

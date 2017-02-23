@@ -6,7 +6,7 @@ best_restaurants
 | Field           | Type                | Null | Key | Default | Extra          |
 |-----------------|---------------------|------|-----|---------|----------------|
 | id              | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
-| restaurant_name | varchar(255)        | YES  |     | NULL    |                |
+| restaurant_name | varchar(255)        | YES  |     | NULL    |                | cuisine_id      | INT                 | YES  |     |         |
 
 
 
