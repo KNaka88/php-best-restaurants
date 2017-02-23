@@ -18,9 +18,12 @@
             </ul>
             {% endif %}
 
+            <p>{{ cuisine_id }}</p>
+
             <form class="form-group" action="/addrestaurant" method="post">
                 <label for="restaurant">Enter a restaurant:</label>
                 <input class="form-control" type="text" name="restaurant"><br>
+                <input type="hidden" name="cuisine_id" value="{{ cuisine_id }}">
                 <button class="btn btn-success" type="submit">Save</button>
             </form>
 

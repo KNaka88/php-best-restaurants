@@ -39,15 +39,18 @@
     });
 
     $app->get("/restaurant/{id}", function($id) use ($app) {
-        $find_restaurant = Restaurant::find($id);
-        return $app['twig']->render('restaurant.html.twig', array('restaurants' => Restaurant::getAll(), 'cuisine' => Cuisine::getAll()));
+        $cuisine_id = $id;
+        //return all Restaurant with  specific cuisine_id;
+        //return cuisine_id??
+        return $app['twig']->render('restaurant.html.twig', array('restaurants' => Restaurant::getMatch($id), 'cuisine' => Cuisine::getAll(), 'cuisine_id'=> $cuisine_id));
     });
 
-
     $app->post("/addrestaurant", function() use ($app) {
-        $restaurant = new Restaurant($_POST['restaurant']);
+        $cuisine_id = $_POST['cuisine_id'];
+        $restaurant = new Restaurant($_POST['restaurant'], $_POST['cuisine_id']);
+        var_dump($restaurant);
         $restaurant->save();
-        return $app['twig']->render('restaurant.html.twig', array('restaurants' => Restaurant::getAll()));
+        return $app['twig']->render('restaurant.html.twig', array('restaurants' => Restaurant::getMatch($cuisine_id), 'cuisine_id'=> $cuisine_id));
     });
 
     $app->get("/editrestaurant/{id}", function($id) use ($app) {
