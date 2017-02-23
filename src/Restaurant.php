@@ -64,7 +64,6 @@
                 $new_id = $name['id'];
                 $new_cuisine_id = $name['cuisine_id'];
                 $new_restaurant_object = new Restaurant($new_restaurant_name, $new_cuisine_id, $new_id);
-                var_dump($new_restaurant_object);
                 array_push($restaurants, $new_restaurant_object);
             }
             return $restaurants;
@@ -80,7 +79,6 @@
                 $new_id = $name['id'];
                 $new_cuisine_id = $name['cuisine_id'];
                 $new_restaurant_object = new Restaurant($new_restaurant_name, $new_cuisine_id, $new_id);
-                var_dump($new_restaurant_object);
                 array_push($restaurants, $new_restaurant_object);
             }
             return $restaurants;
@@ -90,6 +88,7 @@
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM restaurants;");
+            $GLOBALS['DB']->exec("DELETE FROM cuisine;");
         }
 
         // function setRestaurant_name($new_restaurant_name)
