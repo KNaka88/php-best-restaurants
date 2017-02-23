@@ -13,7 +13,7 @@
 
             <ul>
                 {% for restaurant in restaurants %}
-                    <li>{{ restaurant.getRestaurantName }} <a href="/editrestaurant/{{ restaurant.getId }}" class="btn btn-warning">Edit</a></li>
+                    <li>{{ restaurant.getRestaurantName }} <a href="/editrestaurant/{{ restaurant.getId }}" class="btn btn-warning">Edit</a><a href="/deleterestaurant/{{ restaurant.getId }}" class="btn btn-danger">Delete</a></li>
                 {% endfor %}
             </ul>
             {% endif %}

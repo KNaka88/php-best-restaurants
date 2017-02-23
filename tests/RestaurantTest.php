@@ -158,7 +158,28 @@
                     $test_restaurant->update($new_restaurant_name);
 
                     // Assert
-                    $this->assertEquals($new_restaurant_name, $test_restaurant->getRestaurantName()); 
+                    $this->assertEquals($new_restaurant_name, $test_restaurant->getRestaurantName());
 
                 }
+
+
+                function testDelete()
+                {
+
+                    //Arrange
+                    $restaurant_name = "Sams Pizza";
+                    $test_restaurant = new Restaurant($restaurant_name);
+                    $test_restaurant->save();
+
+                    $restaurant_name2 = "Sams Pizza";
+                    $test_restaurant2 = new Restaurant($restaurant_name2);
+                    $test_restaurant2->save();
+
+                    //Act
+                    $test_restaurant->delete();
+
+                    //Assert
+                    $this->assertEquals( [$test_restaurant2], Restaurant::getAll());
+                }
+
 }
