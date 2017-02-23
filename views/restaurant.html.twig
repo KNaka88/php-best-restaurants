@@ -13,7 +13,7 @@
 
             <ul>
                 {% for restaurant in restaurants %}
-                    <li>{{ restaurant.getRestaurantName }}</li>
+                    <li>{{ restaurant.getRestaurantName }} <a href="/editrestaurant/{{ restaurant.getId }}" class="btn btn-warning">Edit</a></li>
                 {% endfor %}
             </ul>
             {% endif %}
@@ -23,6 +23,7 @@
                 <input class="form-control" type="text" name="restaurant"><br>
                 <button class="btn btn-success" type="submit">Save</button>
             </form>
+
 
 
 

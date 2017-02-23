@@ -45,5 +45,10 @@
         return $app['twig']->render('restaurant.html.twig', array('restaurants' => Restaurant::getAll()));
     });
 
+    $app->get("/editrestaurant/{id}", function($id) use ($app) {
+        $find_restaurant = Restaurant::find($id);
+        return $app['twig']->render('edit-restaurant.html.twig', array('editrestaurant' => $find_restaurant));
+    });
+
 
     return $app;

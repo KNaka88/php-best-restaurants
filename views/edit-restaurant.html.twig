@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Edit Restaurant</title>
+    </head>
+    <body>
+        <h1>Best Restaurant</h1>
+        <h2>Edit your entry</h2>
+        <form class="form-group" action="/editrestaurant" method="post">
+            <input type="hidden" name="_method" value="patch">
+            <label for="edit">Edit restaurant:</label>
+            <input lass="form-control" type="text" name="edit">
+            <button class="btn btn-warning" type="submit">Edit</button>
+        </form>
+    </body>
+</html>
