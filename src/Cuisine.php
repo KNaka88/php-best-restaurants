@@ -16,6 +16,21 @@
             return $this->cuisine_type;
         }
 
+        static function getCuisine($id)
+        {
+
+            $returned_cuisine_types = $GLOBALS['DB']->query("SELECT * FROM cuisine WHERE id = {$id};");
+
+            $cuisine = array();
+            foreach($returned_cuisine_types as $name){
+                $new_cuisine_type = $name['cuisine_type'];
+                $new_id = $name['id'];
+                $new_cuisine_object = new Cuisine($new_cuisine_type, $new_id);
+                array_push($cuisine, $new_cuisine_object);
+            }
+            return $cuisine[0];
+        }
+
         function getId()
         {
             return $this->id;

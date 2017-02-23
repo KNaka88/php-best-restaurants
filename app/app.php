@@ -42,14 +42,14 @@
         $cuisine_id = $id;
         //return all Restaurant with  specific cuisine_id;
         //return cuisine_id??
-        return $app['twig']->render('restaurant.html.twig', array('restaurants' => Restaurant::getMatch($id), 'cuisine' => Cuisine::getAll(), 'cuisine_id'=> $cuisine_id));
+        return $app['twig']->render('restaurant.html.twig', array('restaurants' => Restaurant::getMatch($id), 'cuisine' => Cuisine::getCuisine($cuisine_id), 'cuisine_id'=> $cuisine_id));
     });
 
     $app->post("/addrestaurant", function() use ($app) {
         $cuisine_id = $_POST['cuisine_id'];
         $restaurant = new Restaurant($_POST['restaurant'], $_POST['cuisine_id']);
         $restaurant->save();
-        return $app['twig']->render('restaurant.html.twig', array('restaurants' => Restaurant::getMatch($cuisine_id), 'cuisine_id'=> $cuisine_id));
+        return $app['twig']->render('restaurant.html.twig', array('restaurants' => Restaurant::getMatch($cuisine_id), 'cuisine_id'=> $cuisine_id, 'cuisine' => Cuisine::getCuisine($cuisine_id)));
     });
 
     $app->get("/editrestaurant/{id}", function($id) use ($app) {
@@ -62,7 +62,7 @@
         $cuisine_id = $restaurant_name->getCuisineId();
         $update_restaurant = $_POST['update'];
         $restaurant_name->update($update_restaurant);
-        return $app['twig']->render('restaurant.html.twig', array('restaurants' => Restaurant::getMatch($cuisine_id), 'cuisine' => Cuisine::getAll(), 'cuisine_id' => $cuisine_id));
+        return $app['twig']->render('restaurant.html.twig', array('restaurants' => Restaurant::getMatch($cuisine_id), 'cuisine' => Cuisine::getAll(), 'cuisine_id' => $cuisine_id, 'cuisine' => Cuisine::getCuisine($cuisine_id)));
     });
 
     $app->get('/deleterestaurant/{id}', function($id) use ($app) {
@@ -70,7 +70,7 @@
         $cuisine_id = $find_restaurant->getCuisineId();
         $find_restaurant->delete();
 
-        return $app['twig']->render('restaurant.html.twig', array('restaurants' => Restaurant::getMatch($cuisine_id), 'cuisine_id'=> $cuisine_id));
+        return $app['twig']->render('restaurant.html.twig', array('restaurants' => Restaurant::getMatch($cuisine_id), 'cuisine_id'=> $cuisine_id, 'cuisine' => Cuisine::getCuisine($cuisine_id)));
     });
 
     $app->get('/deleteall', function() use ($app) {
