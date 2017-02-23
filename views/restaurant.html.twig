@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Reataurant Database</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Best restaurant</h1>
+            {% if restaurants is not empty %}
+            <p>Your choices are:</p>
+
+            <ul>
+                {% for restaurant in restaurants %}
+                    <li>{{ restaurant.getRestaurantName }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </body>
+</html>

@@ -24,13 +24,18 @@
     );
 
     $app->get("/", function() use ($app){
-        return $app['twig']->render('index.html.twig', array('restaurants' => Restaurant::getAll()));
+        return $app['twig']->render('index.html.twig', array('cuisines' => Cuisine::getAll()));
     });
 
     $app->post("/cuisine", function() use ($app) {
-        $cuisine = new Restaurant($_POST['cuisine']);
+        $cuisine = new Cuisine($_POST['cuisine']);
         $cuisine->save();
-        return $app['twig']->render('index.html.twig', array('restaurants' => Restaurant::getAll()));
+        return $app['twig']->render('index.html.twig', array('cuisines' => Cuisine::getAll(), ));
+    });
+
+    $app->get("/restaurant/{id}", function($id) use ($app) {
+        $find_restaurant = Restaurant::find($id);
+        return $app['twig']->render('restaurant.html.twig', array('restaurants' => Restaurant::getAll(), 'cuisine' => Cuisine::getAll()));
     });
 
 

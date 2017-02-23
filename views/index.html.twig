@@ -15,11 +15,11 @@
                 <button type="submit">Go!</button>
             </form>
 
-            {% if restaurants is not empty %}
+            {% if cuisines is not empty %}
                 <p> are your choices:</p>
                 <ul>
-                    {% for restaurant in restaurants %}
-                        <li><a href="/restaurant/{{restaurant.getId}}">{{ restaurant.getRestaurantName }}</a></li>
+                    {% for cuisine in cuisines %}
+                        <li><a href="/restaurant/{{cuisine.getId}}">{{ cuisine.getCuisineType }}</a></li>
                     {% endfor %}
                 </ul>
             {% else %}
