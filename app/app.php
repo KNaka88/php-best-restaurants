@@ -38,8 +38,12 @@
         return $app['twig']->render('restaurant.html.twig', array('restaurants' => Restaurant::getAll(), 'cuisine' => Cuisine::getAll()));
     });
 
-    
 
+    $app->post("/addrestaurant", function() use ($app) {
+        $restaurant = new Restaurant($_POST['restaurant']);
+        $restaurant->save();
+        return $app['twig']->render('restaurant.html.twig', array('restaurants' => Restaurant::getAll()));
+    });
 
 
     return $app;

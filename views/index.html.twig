@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <title>Restaurant Database</title>
     </head>
     <body>
@@ -11,8 +12,8 @@
 
             <form class="form-group" action="/cuisine" method="post">
                 <label for="cuisine">Create cuisine category</label>
-                <input class="form-control" type="text" name="cuisine">
-                <button type="submit">Go!</button>
+                <input class="form-control" type="text" name="cuisine"><br>
+                <button class="btn btn-success" type="submit">Go!</button>
             </form>
 
             {% if cuisines is not empty %}

@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <title>Reataurant Database</title>
     </head>
     <body>
@@ -16,6 +17,12 @@
                 {% endfor %}
             </ul>
             {% endif %}
+
+            <form class="form-group" action="/addrestaurant" method="post">
+                <label for="restaurant">Enter a restaurant:</label>
+                <input class="form-control" type="text" name="restaurant"><br>
+                <button class="btn btn-success" type="submit">Save</button>
+            </form>
 
 
 
