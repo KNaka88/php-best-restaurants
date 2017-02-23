@@ -1,9 +1,14 @@
 <?php
 
+
     date_default_timezone_set('America/Los_Angeles');
     require_once __DIR__."/../vendor/autoload.php";
     require_once __DIR__."/../src/Restaurant.php";
     require_once __DIR__."/../src/Cuisine.php";
+
+    use Symfony\Component\HttpFoundation\Request;
+    Request::enableHttpMethodParameterOverride();
+
 
     $server = 'mysql:host=localhost:8889;dbname=best_restaurants';
     $username = 'root';
@@ -48,6 +53,13 @@
     $app->get("/editrestaurant/{id}", function($id) use ($app) {
         $find_restaurant = Restaurant::find($id);
         return $app['twig']->render('edit-restaurant.html.twig', array('editrestaurant' => $find_restaurant));
+    });
+
+    $app->patch("/updaterestaurant/{id}", function($id) use ($app) {
+        $restaurant_name = Restaurant::find($id);
+        $update_restaurant = $_POST['update'];
+        $restaurant_name->update($update_restaurant);
+        return $app['twig']->render('restaurant.html.twig', array('restaurants' => Restaurant::getAll(), 'cuisine' => Cuisine::getAll()));
     });
 
 

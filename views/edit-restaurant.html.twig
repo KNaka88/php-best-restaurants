@@ -7,10 +7,10 @@
     <body>
         <h1>Best Restaurant</h1>
         <h2>Edit your entry</h2>
-        <form class="form-group" action="/editrestaurant" method="post">
+        <form class="form-group" action="/updaterestaurant/{{ editrestaurant.getId }}" method="post">
             <input type="hidden" name="_method" value="patch">
-            <label for="edit">Edit restaurant:</label>
-            <input lass="form-control" type="text" name="edit">
+            <label for="update">Edit restaurant:</label>
+            <input class="form-control" type="text" name="update">
             <button class="btn btn-warning" type="submit">Edit</button>
         </form>
     </body>

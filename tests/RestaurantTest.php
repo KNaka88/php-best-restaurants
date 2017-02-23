@@ -145,4 +145,20 @@
                     //Assert
                     $this->assertEquals($test_restaurant, $result);
                 }
+
+                function test_update()
+                {
+                    // Arrange
+                    $restaurant_name = "Sams Pizza";
+                    $restaurant_id = null;
+                    $test_restaurant = new Restaurant($restaurant_name, $restaurant_id);
+                    $new_restaurant_name = "Bobs Burgers";
+
+                    // Act
+                    $test_restaurant->update($new_restaurant_name);
+
+                    // Assert
+                    $this->assertEquals($new_restaurant_name, $test_restaurant->getRestaurantName()); 
+
+                }
 }

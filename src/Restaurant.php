@@ -16,6 +16,11 @@
             return $this->restaurant_name;
         }
 
+        function setRestaurantName($new_restaurant_name)
+        {
+            $this->restaurant_name = $new_restaurant_name;
+        }
+
         function getId()
         {
             return $this->id;
@@ -28,6 +33,12 @@
            $GLOBALS['DB']->exec("INSERT INTO restaurants(restaurant_name) VALUES ('{$this->getRestaurantName()}')");
 
            $this->id = $GLOBALS['DB']->lastInsertId();
+        }
+
+        function update($new_restaurant_name)
+        {
+            $GLOBALS['DB']->exec("UPDATE restaurants SET restaurant_name = '$new_restaurant_name' WHERE id = {$this->getId()}");
+            $this->setRestaurantName($new_restaurant_name);
         }
 
 
