@@ -33,7 +33,7 @@
     });
 
     $app->post("/cuisine", function() use ($app) {
-        $cuisine = new Cuisine($_POST['cuisine']);
+        $cuisine = new Cuisine(addslashes($_POST['cuisine']));
         $cuisine->save();
         return $app['twig']->render('index.html.twig', array('cuisines' => Cuisine::getAll() ));
     });
@@ -47,7 +47,7 @@
 
     $app->post("/addrestaurant", function() use ($app) {
         $cuisine_id = $_POST['cuisine_id'];
-        $restaurant = new Restaurant($_POST['restaurant'], $_POST['cuisine_id']);
+        $restaurant = new Restaurant(addslashes($_POST['restaurant']), $_POST['cuisine_id']);
         $restaurant->save();
         return $app['twig']->render('restaurant.html.twig', array('restaurants' => Restaurant::getMatch($cuisine_id), 'cuisine_id'=> $cuisine_id, 'cuisine' => Cuisine::getCuisine($cuisine_id)));
     });
