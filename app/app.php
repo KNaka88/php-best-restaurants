@@ -38,6 +38,8 @@
         return $app['twig']->render('restaurant.html.twig', array('restaurants' => Restaurant::getAll(), 'cuisine' => Cuisine::getAll()));
     });
 
+    
+
 
 
     return $app;
