@@ -20,14 +20,22 @@
                 <p>Choose a cuisine you like:</p>
                 <ul>
                     {% for cuisine in cuisines %}
-                        <li><a href="/restaurant/{{cuisine.getId}}">{{ cuisine.getCuisineType }}</a></li>
+                        <li><a href="/restaurant/{{cuisine.getCuisineType}}/{{cuisine.getId}}">{{ cuisine.getCuisineType }}</a></li>
                     {% endfor %}
                 </ul>
                 <form class="form-group" action="/deleteall" method="get">
                     <button class="btn btn-danger" type="submit">Delete all categories</button>
                 </form>
-            {% else %}
             {% endif %}
+
+            <h2>Search Restaurant</h2>
+            <form class="form-group" action="/search" method="post">
+                <label for="search">Search for a restaurant by name:</label>
+                <input class="form-control" type="text" name="search">
+                <button class="btn btn-warning" type="submit">Search</button>
+            </form>
+
+
         </div>
     </body>
 </html>

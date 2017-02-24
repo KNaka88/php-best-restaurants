@@ -91,11 +91,6 @@
             $GLOBALS['DB']->exec("DELETE FROM cuisine;");
         }
 
-        // function setRestaurant_name($new_restaurant_name)
-        // {
-        //     $this->restaurant_name = $new_restaurant_name;
-        // }
-
         static function find($search_id)
         {
             $found_restaurant = null;
@@ -114,5 +109,21 @@
             $GLOBALS['DB']->exec("DELETE FROM restaurants WHERE id = {$this->getId()};");
         }
 
+        static function search($user_search)
+        {
+            $returned_restaurant_names = $GLOBALS['DB']->query("SELECT * FROM restaurants WHERE restaurant_name LIKE '%{$user_search}%';");
+
+
+            $restaurants = array();
+            foreach($returned_restaurant_names as $name){
+                $new_restaurant_name = $name['restaurant_name'];
+                $new_id = $name['id'];
+                $new_cuisine_id = $name['cuisine_id'];
+                $new_restaurant_object = new Restaurant($new_restaurant_name, $new_cuisine_id, $new_id);
+                array_push($restaurants, $new_restaurant_object);
+            }
+            return $restaurants;
+
+        }
 
     }

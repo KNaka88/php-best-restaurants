@@ -35,10 +35,10 @@
     $app->post("/cuisine", function() use ($app) {
         $cuisine = new Cuisine(filter_var($_POST['cuisine'],FILTER_SANITIZE_MAGIC_QUOTES));
         $cuisine->save();
-        return $app['twig']->render('index.html.twig', array('cuisines' => Cuisine::getAll() ));
+        return $app['twig']->render('index.html.twig', array('cuisines' => Cuisine::getAll()));
     });
 
-    $app->get("/restaurant/{id}", function($id) use ($app) {
+    $app->get("/restaurant/{cuisine}/{id}", function($cuisine, $id) use ($app) {
         $cuisine_id = $id;
         //return all Restaurant with  specific cuisine_id;
         //return cuisine_id??
@@ -55,6 +55,13 @@
     $app->get("/editrestaurant/{id}", function($id) use ($app) {
         $find_restaurant = Restaurant::find($id);
         return $app['twig']->render('edit-restaurant.html.twig', array('editrestaurant' => $find_restaurant));
+    });
+
+    $app->post('/search', function() use ($app) {
+        $user_search = filter_var($_POST['search'],FILTER_SANITIZE_MAGIC_QUOTES);
+        $user_search_result = Restaurant::search($user_search);
+
+        return $app['twig']->render('search-result.html.twig', array('results' =>$user_search_result));
     });
 
     $app->patch("/updaterestaurant/{id}", function($id) use ($app) {

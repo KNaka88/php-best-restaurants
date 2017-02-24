@@ -65,11 +65,6 @@
             $GLOBALS['DB']->exec("DELETE FROM cuisine;");
         }
 
-        // function setCuisine_name($new_cuisine_type)
-        // {
-        //     $this->cuisine_type = $new_cuisine_type;
-        // }
-
         static function find($search_id)
         {
             $found_cuisine = null;
